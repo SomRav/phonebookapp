@@ -3,6 +3,7 @@ const app = express();
 const morgan = require("morgan");
 const cors = require("cors");
 
+app.use(express.static("dist"));
 app.use(express.json());
 app.use(cors());
 
@@ -72,7 +73,7 @@ app.post("/api/persons", (request, response) => {
   const person = {
     name: body.name,
     number: body.number,
-    id: Math.floor(Math.random() * 100 + 1),
+    id: String(Math.floor(Math.random() * 100 + 1)),
   };
 
   persons = persons.concat(person);
